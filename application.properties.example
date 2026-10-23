@@ -1,0 +1,6 @@
+# Copy this file to application-local.properties in the project root and fill in real values.
+# application-local.properties is in .gitignore so it never gets committed.
+spring.datasource.username=gameflix_user
+spring.datasource.password=CHANGE_ME
+# At least 32 characters. Generate one with: openssl rand -base64 48
+jwt.secret=CHANGE_ME_TO_A_RANDOM_STRING_AT_LEAST_32_CHARACTERS_LONG
