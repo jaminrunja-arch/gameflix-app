@@ -152,3 +152,15 @@ My Module 3 ERD had `users(user_id, username, email, password_hash, role_id, cre
 I used an AI assistant (Claude) to generate the initial project structure, the security configuration, the service and controller code, the tests, and a first draft of this README.
 
 One thing I changed: the generated CORS config allowed GET, POST, PUT, DELETE, and OPTIONS, but this service only has GET and POST endpoints. I removed PUT and DELETE so the browser only gets permission for methods the API actually uses, then reran the tests to make sure nothing broke.
+
+
+## CI Workflow
+
+The GitHub Actions workflow in `.github/workflows/ci.yml` runs on every push and pull request to `main`. It performs these steps:
+
+1. Checks out the repository
+2. Sets up JDK 21 (Temurin)
+3. Builds the jar with `mvn clean package -DskipTests`
+4. Builds a Docker image named `gameflix-backend` using the Dockerfile
+
+Tests are skipped in CI because they need a running MySQL database and a JWT secret, which are not stored in the repository.
